@@ -1,0 +1,84 @@
+reporter:
+  metric_columns:
+    - recall
+    - training_iteration
+  parameter_columns:
+    - model.task_type
+
+tune_callback:
+  class_path: TuneReportCallback
+  init_args:
+    metrics:
+      recall: valid/Recall@10
+    'on': validation_end
+
+run:
+  resume: "AUTO"
+  metric: recall
+  mode: max
+  num_samples: 1
+  resources_per_trial:
+    cpu: 0
+    gpu: 0.432
+
+  local_dir: 'output_ray'
+
+  keep_checkpoints_num: 1
+  checkpoint_score_attr: max-recall
+
+  # name: debugging
+  name: local_attn_ar_yelp
+  scheduler:
+    class_path: AsyncHyperBandScheduler
+    init_args:
+      max_t: 40
+      grace_period: 5
+      reduction_factor: 2
+
+  verbose: 3
+
+# sse-pt
+  config:
+    model.task_type: tune.grid_search(['ar'])
+    model.weight_decay: tune.grid_search([0, 0.0001, 0.01, 1])
+    model.optimizer_type: tune.grid_search(['adamw'])
+    # ae placeholder
+    # data.mask_prob: tune.grid_search([0.2, 0.4, 0.6, 0.8])
+    # ar placeholder
+    data.mask_prob: tune.grid_search([0.2])
+    model.num_attention_heads: tune.grid_search([1, 2])
+    model.dropout_prob: tune.grid_search([0.0, 0.2, 0.4, 0.6, 0.8])
+    data.item_sse_prob: tune.grid_search([0.0])
+    data.user_sse_prob: tune.grid_search([0.0])
+    model.concat_user: tune.grid_search([False])
+    # data.item_sse_prob: tune.grid_search([0.1, 0.2, 0.3])
+    # data.user_sse_prob: tune.grid_search([0.7, 0.8, 0.9])
+    model.num_hidden_layers: tune.grid_search([2])
+    model.aggregation_type: tune.grid_search(['last'])
+    model.num_output_layers: tune.grid_search([0])
+    model.layernorm_first: tune.grid_search([True])
+    model.lr: tune.grid_search([0.001])
+    model.eval_neg: tune.grid_search([0])
+    model.hidden_size: tune.grid_search([32, 64])
+    model.loss_type: tune.grid_search(['ce'])
+    trainer.max_epochs: tune.grid_search([200])
+# max memory config
+  # config:
+  #   model.task_type: tune.grid_search(['ar'])
+  #   data.mask_prob: tune.grid_search([0.8])
+  #   model.num_attention_heads: tune.grid_search([2])
+  #   model.dropout_prob: tune.grid_search([0.2])
+  #   data.item_sse_prob: tune.grid_search([0.8])
+  #   data.user_sse_prob: tune.grid_search([0.8])
+  #   # data.item_sse_prob: tune.grid_search([0.1, 0.2, 0.3])
+  #   # data.user_sse_prob: tune.grid_search([0.7, 0.8, 0.9])
+  #   model.num_hidden_layers: tune.grid_search([2])
+  #   model.aggregation_type: tune.grid_search(['last'])
+  #   model.num_output_layers: tune.grid_search([0])
+  #   model.layernorm_first: tune.grid_search([True])
+  #   model.lr: tune.grid_search([0.001])
+  #   model.eval_neg: tune.grid_search([0])
+  #   model.concat_user: tune.grid_search([False])
+  #   model.hidden_size: tune.grid_search([64])
+  #   model.loss_type: tune.grid_search(['ce'])
+  #   trainer.max_epochs: tune.grid_search([200])

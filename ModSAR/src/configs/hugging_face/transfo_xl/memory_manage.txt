@@ -1,0 +1,15 @@
+1. ae mask_0.8 3187
+
+bert_ar (to test max mem use)
+1. ml-1m 3863 -> 4000
+2. beauty 4847 -> 5000
+3. video 3159 -> 3500
+4. sports 6199 -> 6500
+5. yelp 3791 -> 4000
+
+albert_ar (to test max mem use)
+1. ml-1m 3863 -> 4000
+2. beauty 4847 -> 5000
+3. video 3159 -> 3500
+4. sports 6199 -> 6500
+5. yelp 3791 -> 4000

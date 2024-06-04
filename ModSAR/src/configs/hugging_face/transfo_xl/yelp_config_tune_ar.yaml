@@ -1,0 +1,69 @@
+reporter:
+  metric_columns:
+    - recall
+    - training_iteration
+  parameter_columns:
+    - model.task_type
+
+tune_callback:
+  class_path: TuneReportCallback
+  init_args:
+    metrics:
+      recall: valid/Recall@10
+    'on': validation_end
+
+run:
+  resume: "AUTO"
+  metric: recall
+  mode: max
+  num_samples: 1
+  resources_per_trial:
+    cpu: 0
+    gpu: 0.33
+
+  local_dir: 'output_hf'
+
+  keep_checkpoints_num: 1
+  checkpoint_score_attr: max-recall
+
+  # name: debugging
+  name: none_none_none
+  scheduler:
+    class_path: AsyncHyperBandScheduler
+    init_args:
+      max_t: 40
+      grace_period: 5
+      reduction_factor: 2
+
+  verbose: 3
+
+  config:
+    model.task_type: tune.grid_search(['ar'])
+    # ae placeholder
+    # data.mask_prob: tune.grid_search([0.2, 0.4, 0.6, 0.8])
+    # ar placeholder
+    data.mask_prob: tune.grid_search([0.2])
+    model.num_attention_heads: tune.grid_search([1, 2])
+    model.dropout_prob: tune.grid_search([0.0, 0.2, 0.4, 0.6, 0.8])
+
+    model.num_hidden_layers: tune.grid_search([2])
+    model.lr: tune.grid_search([0.001])
+    model.hidden_size: tune.grid_search([64])
+    model.loss_type: tune.grid_search(['ce'])
+    trainer.max_epochs: tune.grid_search([200])
+  
+  # max memory config
+  # config:
+  #   model.task_type: tune.grid_search(['ar'])
+  #   # ae placeholder
+  #   data.mask_prob: tune.grid_search([0.8])
+  #   # ar placeholder
+  #   # data.mask_prob: tune.grid_search([0.2])
+  #   model.num_attention_heads: tune.grid_search([2])
+  #   model.dropout_prob: tune.grid_search([0.8])
+
+  #   model.num_hidden_layers: tune.grid_search([2])
+  #   model.lr: tune.grid_search([0.001])
+  #   model.hidden_size: tune.grid_search([64])
+  #   model.loss_type: tune.grid_search(['ce'])
+  #   trainer.max_epochs: tune.grid_search([200])
