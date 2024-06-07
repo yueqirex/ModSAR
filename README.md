@@ -1,6 +1,6 @@
 # Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders.
 
-<img src=media/ModSAR_v3.pdf width=1000>
+<img src=media/ModSAR_v3.png width=1000>
 
 [Under review]: Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders.
 
