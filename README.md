@@ -4,7 +4,7 @@
 
 PyTorch-Lightning and Ray-Tune implemented AE-AR comparison for self-attentive sequential recommendation.
 
-<img src=media/ModSAR_v3.png width=1000>
+<img src=media/ModSAR_v3.png width=700>
 
 
 ## Requirements
