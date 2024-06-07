@@ -1,14 +1,18 @@
 # Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders.
 
-[Under review]: Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders [[Paper](https://arxiv.org/pdf/2406.02048)][[Code](https://github.com/yueqirex/ModSAR)]
+[Under review]: Auto-Encoding or Auto-Regression? **A Reality Check on Causality of Self-Attention-Based Sequential Recommenders [[Paper](https://arxiv.org/pdf/2406.02048)][[Code](https://github.com/yueqirex/ModSAR)]**.
 
 PyTorch-Lightning and Ray-Tune implemented AE-AR comparison for self-attentive sequential recommendation.
 
 <img src=media/ModSAR_v3.png width=700>
 
+## Scope and hierarchy of study
+<img align="right" src="media/scope.png" width=300> This work studies the comparison between Auto-Encoding (AE) and Auto-Regression (AR) for sequential recommendation in a hierarchical format:
+1. Representative model comparison: SASRec-BERT4REC (comparing evaluation environment, fairness, etc.).
+2. General, modularized design space of self-attentive sequential recommenders.
+3. Broader self-attentive model variants (Huggingface ecosystem on recommendation datasets).
 
 ## Requirements
-
 Key packages are Numpy, PyTorch-Lighting, PyTorch, huggingface-hub and ray-tune; Versions of all packages are detailed in ```requirements.txt```. Use below command to install all required packages (Using pip inside a new conda environment is recommended, another way to guarantee max compatibility is to first install key packages with versions in ```requirements.txt``` which usually works as we tested).
 ```bash
 pip install -r requirements.txt
