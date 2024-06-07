@@ -1,6 +1,6 @@
 # Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders.
 
-Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders.
+[Under review] Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders.
 
 PyTorch-Lightning and Ray-Tune implemented AE-AR comparison for self-attentive sequential recommendation.
 
