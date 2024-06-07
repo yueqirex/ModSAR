@@ -1,10 +1,10 @@
 # Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders.
 
-<img src=media/ModSAR_v3.png width=1000>
-
-[Under review]: Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders.
+[Under review]: Auto-Encoding or Auto-Regression? A Reality Check on Causality of Self-Attention-Based Sequential Recommenders [[Paper](https://arxiv.org/pdf/2406.02048)][[Code](https://github.com/yueqirex/ModSAR)]
 
 PyTorch-Lightning and Ray-Tune implemented AE-AR comparison for self-attentive sequential recommendation.
+
+<img src=media/ModSAR_v3.png width=1000>
 
 
 ## Requirements
