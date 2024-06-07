@@ -7,7 +7,7 @@ PyTorch-Lightning and Ray-Tune implemented AE-AR comparison for self-attentive s
 <img src=media/ModSAR_v3.png width=700>
 
 ## Scope and hierarchy of study
-<img align="right" src="media/scope.png" width=325> This work studies the comparison between Auto-Encoding (AE) and Auto-Regression (AR) for sequential recommendation in a hierarchical format:
+<img align="right" src="media/scope.png" width=400> This work studies the comparison between Auto-Encoding (AE) and Auto-Regression (AR) for sequential recommendation in a hierarchical format:
 1. Representative model comparison: SASRec-BERT4REC (comparing evaluation environment, fairness, etc.).
 2. General, modularized design space of self-attentive sequential recommenders.
 3. Broader self-attentive model variants (Huggingface ecosystem on recommendation datasets).
